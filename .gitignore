@@ -1,113 +1,200 @@
-# ================================
-# VoxUz — Full .gitignore
-# ================================
+# ==============================================================================
+# VoxUz — .gitignore
+# Backend: FastAPI + XTTS v2 + Whisper · Frontend: Next.js · Docker · Windows dev
+# ==============================================================================
 
-# ── Python ──────────────────────
-__pycache__/
+# ── Secrets & environment ─────────────────────────────────────────────────────
+.env
+.env.*
+*.env
+!.env.example
+!.env.sample
+
+# Credentials / keys — never commit
+*.pem
+*.key
+*.crt
+*.cert
+*.p12
+*.pfx
+secrets/
+credentials.json
+service-account*.json
+.htpasswd
+
+# ── Python ────────────────────────────────────────────────────────────────────
+pycache/
 *.py[cod]
 *$py.class
 *.pyo
 *.pyd
 .Python
+*.so
 pip-log.txt
 pip-delete-this-directory.txt
 
 # Virtual environments
 venv/
+.venv/
 env/
 ENV/
-.venv/
-.env/
+env.bak/
+venv.bak/
+.python-version
+Pipfile.lock
+poetry.lock
+uv.lock
 
-# ── Environment variables ────────
-.env
-.env.local
-.env.*.local
-*.env
+# Packaging / build
+build/
+dist/
+*.egg
+*.egg-info/
+.eggs/
+sdist/
+wheels/
+*.manifest
+*.spec
 
-# ── FastAPI / Uvicorn ────────────
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+.tox/
+.nox/
+.hypothesis/
+.ipynb_checkpoints/
+
+# Coverage
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+*.cover
+nosetests.xml
+
+# ── Databases ─────────────────────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.dump
+*.sql.gz
+pgdata/
+postgres_data/
+
+# ── Logs & runtime ────────────────────────────────────────────────────────────
 *.log
+logs/
+*.pid
+*.seed
+*.pid.lock
+celerybeat-schedule
+celerybeat.pid
+dump.rdb
 
-# ── Audio & Model files ──────────
+# ── Generated media & user recordings ─────────────────────────────────────────
+# Voice samples, embeddings and TTS output must never enter git.
 backend/voices/
 backend/outputs/
 backend/temp/
+backend/uploads/
+voices/
+outputs/
+uploads/
+temp/
+tmp/
+
 *.wav
 *.mp3
 *.ogg
 *.webm
 *.flac
 *.m4a
+*.aac
+*.opus
 *.npy
+*.npz
+# Need a committed audio fixture? Force it: git add -f path/to/fixture.wav
 
-# ── XTTS / Whisper cache ─────────
+# ── ML models & caches (XTTS v2 / Whisper / HuggingFace / torch) ──────────────
+models/
+checkpoints/
 tts_models/
 whisper_models/
-~/.cache/huggingface/
-~/.local/share/tts/
+.cache/
+.huggingface/
+.torch/
+*.pth
+*.pt
+*.ckpt
+*.bin
+*.safetensors
+*.onnx
+*.gguf
 
-# ── Database ─────────────────────
-*.db
-*.sqlite
-*.sqlite3
-
-# ── Docker ───────────────────────
-docker-compose.override.yml
-
-# ── Next.js ──────────────────────
-frontend/.next/
-frontend/out/
-frontend/build/
-frontend/node_modules/
-frontend/.npm
-frontend/.eslintcache
-
-# ── Node ─────────────────────────
+# ── Node / Next.js frontend ───────────────────────────────────────────────────
 node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+.next/
+out/
+.swc/
+.turbo/
+.vercel/
+.eslintcache
+*.tsbuildinfo
+next-env.d.ts
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
+.npm
 
-# ── IDE ──────────────────────────
-.vscode/settings.json
+# ── Docker ────────────────────────────────────────────────────────────────────
+docker-compose.override.yml
+docker-compose.*.local.yml
+.docker/
+
+# ── Editors & IDEs ────────────────────────────────────────────────────────────
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
 .idea/
+*.iml
 *.swp
 *.swo
 *~
-.DS_Store
-Thumbs.db
+.claude/settings.local.json
 
-# ── OS ───────────────────────────
+# ── OS cruft ──────────────────────────────────────────────────────────────────
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+# macOS
 .DS_Store
 .DS_Store?
 ._*
-.Spotlight-V8
+.AppleDouble
+.LSOverride
+.Spotlight-V100
 .Trashes
-ehthumbs.db
-Thumbs.db
-desktop.ini
-
-# ── Testing ──────────────────────
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-coverage.xml
-*.cover
-
-# ── Build ────────────────────────
-dist/
-build/
-*.egg-info/
-.eggs/
-
-# ── Secrets ──────────────────────
-*.pem
-*.key
-*.cert
-secrets/
+# Linux
+.fuse_hidden*
+.nfs*
