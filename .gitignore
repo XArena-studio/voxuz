@@ -1,0 +1,113 @@
+# ================================
+# VoxUz — Full .gitignore
+# ================================
+
+# ── Python ──────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# ── Environment variables ────────
+.env
+.env.local
+.env.*.local
+*.env
+
+# ── FastAPI / Uvicorn ────────────
+*.log
+
+# ── Audio & Model files ──────────
+backend/voices/
+backend/outputs/
+backend/temp/
+*.wav
+*.mp3
+*.ogg
+*.webm
+*.flac
+*.m4a
+*.npy
+
+# ── XTTS / Whisper cache ─────────
+tts_models/
+whisper_models/
+~/.cache/huggingface/
+~/.local/share/tts/
+
+# ── Database ─────────────────────
+*.db
+*.sqlite
+*.sqlite3
+
+# ── Docker ───────────────────────
+docker-compose.override.yml
+
+# ── Next.js ──────────────────────
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/node_modules/
+frontend/.npm
+frontend/.eslintcache
+
+# ── Node ─────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# ── IDE ──────────────────────────
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ── OS ───────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V8
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ── Testing ──────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+coverage.xml
+*.cover
+
+# ── Build ────────────────────────
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# ── Secrets ──────────────────────
+*.pem
+*.key
+*.cert
+secrets/
