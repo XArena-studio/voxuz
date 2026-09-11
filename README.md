@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎙 VoxUz — O'zbek AI Ovoz Platformasi
 
 ElevenLabs'ga o'xshash, lekin o'zbek tili uchun yaratilgan AI ovoz klonlash platformasi.
@@ -133,3 +134,6 @@ voxuz/
 ## 🤝 Litsenziya
 
 MIT License
+=======
+# voxuz
+>>>>>>> 2092d25fb7e0181aab40af836c40ebf36e1050ee
